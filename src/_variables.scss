@@ -1,0 +1,10 @@
+$primary-color: #04c142;
+$text-color: #fff;
+$background-color: #333;
+$background-color-2: #444;
+
+@mixin up600() {
+  @media only screen and (min-width: 600px) {
+    @content;
+  }
+}
