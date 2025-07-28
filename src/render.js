@@ -34,6 +34,8 @@ export function renderJokes() {
     savedJokes.forEach((element) => {
       renderJoke(element.text, element.id);
     });
-    saveJokesPlaceholder.classList.add("saved-jokes__placeholder--disabled");
+    if (savedJokes.length > 0) {
+      saveJokesPlaceholder.classList.add("saved-jokes__placeholder--disabled");
+    }
   }
 }
