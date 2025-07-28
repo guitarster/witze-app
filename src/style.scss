@@ -12,7 +12,7 @@ body {
 }
 
 .app {
-  width: 800px;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
   margin: 3rem auto 1rem auto;
@@ -30,9 +30,10 @@ body {
 }
 
 .current-joke {
-  justify-items: center;
+  justify-self: center;
+  width: 80%;
   margin: 2rem auto;
-  background-color: $background-color-2;
+  background-color: $background-color-lighten;
   padding: 1.5rem;
 
   @include up600() {
@@ -83,7 +84,7 @@ body {
     @include buttons();
     border: 1px solid $primary-color;
     display: flex;
-    background-color: $background-color-2;
+    background-color: $background-color-lighten;
     color: $primary-color;
     gap: 0.3rem;
     align-items: center;
@@ -139,19 +140,21 @@ body {
 }
 
 .saved-joke {
-  background-color: $background-color-2;
+  background-color: $background-color-lighten;
   padding: 1rem 1.5rem;
   display: flex;
   align-items: center;
+  margin: auto;
   gap: 1rem;
-  justify-content: space-between;
+  justify-content: center;
+  width: 80%;
 
   @include up600() {
     padding: 1.5rem;
   }
 
   &__button {
-    background-color: $background-color-2;
+    background-color: $background-color-lighten;
     width: 2rem;
     height: 2rem;
     border: none;
