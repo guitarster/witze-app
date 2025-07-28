@@ -1,16 +1,21 @@
-import { getJoke } from "./getjoke.js";
-import { saveJoke, checkSavedJokes } from "./storing.js";
+import { saveJoke, deleteJoke } from "./storing.js";
 import { renderJoke, renderJokes } from "./render.js";
-import { deleteJoke } from "./delete.js";
 
 const addcurrentJoke = document.querySelector(".current-joke__text");
 const newJokeBtn = document.querySelector(".current-joke__new-joke");
 const saveJokeBtn = document.querySelector(".current-joke__save-joke");
 
-document.addEventListener("DOMContentLoaded", renderJokes());
-
 let currentJoke = "";
-let id = 0;
+
+async function getJoke() {
+  const url = "https://witzapi.de/api/joke/";
+
+  const response = await fetch(url);
+
+  const json = await response.json();
+
+  return json[0].text;
+}
 
 newJokeBtn.addEventListener("click", async () => {
   currentJoke = await getJoke();
@@ -19,12 +24,16 @@ newJokeBtn.addEventListener("click", async () => {
 });
 
 saveJokeBtn.addEventListener("click", () => {
-  if (checkSavedJokes(currentJoke)) {
+  const savedJokes = JSON.parse(localStorage.getItem("jokes"));
+  if (savedJokes.find((element) => element.text === currentJoke)) {
     alert("Witz ist schon gespeichert.");
+    return;
   } else {
-    id = saveJoke(currentJoke);
+    let id = saveJoke(currentJoke);
     renderJoke(currentJoke, id);
   }
 });
 
 window.deleteJoke = deleteJoke;
+
+renderJokes();

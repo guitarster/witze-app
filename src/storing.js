@@ -4,8 +4,8 @@ export function saveJoke(currentJoke) {
   let id = 1;
   let jokes = [];
 
-  if (savedJokes) {
-    id = savedJokes.length + 1;
+  if (savedJokes && savedJokes.length > 0) {
+    id = savedJokes[savedJokes.length - 1].id + 1;
     jokes = savedJokes;
   }
 
@@ -19,15 +19,19 @@ export function saveJoke(currentJoke) {
   return id;
 }
 
-export function checkSavedJokes(currentJoke) {
+export function deleteJoke(id) {
+  const joke = document.getElementById(id);
+  joke.remove();
+
   const savedJokes = JSON.parse(localStorage.getItem("jokes"));
-  if (savedJokes) {
-    if (savedJokes.length > 0) {
-      for (let element of savedJokes) {
-        if (element.text === currentJoke) {
-          return true;
-        }
-      }
-    }
+  let filteredJokes = savedJokes.filter((joke) => joke.id !== id);
+
+  localStorage.setItem("jokes", JSON.stringify(filteredJokes));
+
+  if (filteredJokes.length === 0) {
+    const saveJokesPlaceholder = document.querySelector(
+      ".saved-jokes__placeholder"
+    );
+    saveJokesPlaceholder.classList.remove("saved-jokes__placeholder--disabled");
   }
 }
