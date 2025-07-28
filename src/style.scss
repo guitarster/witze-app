@@ -146,7 +146,7 @@ body {
   align-items: center;
   margin: auto;
   gap: 1rem;
-  justify-content: center;
+  justify-content: space-between;
   width: 80%;
 
   @include up600() {
