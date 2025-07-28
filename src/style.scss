@@ -150,6 +150,13 @@ body {
     padding: 1.5rem;
   }
 
+  &__button {
+    background-color: $background-color-2;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+  }
+
   &__delete-image {
     width: 1.3rem;
     min-width: 1.3rem;

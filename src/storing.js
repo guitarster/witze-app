@@ -1,7 +1,7 @@
 export function saveJoke(currentJoke) {
   const savedJokes = JSON.parse(localStorage.getItem("jokes"));
-  let id = 1;
 
+  let id = 1;
   let jokes = [];
 
   if (savedJokes) {
@@ -16,6 +16,7 @@ export function saveJoke(currentJoke) {
 
   jokes.push(joke);
   localStorage.setItem("jokes", JSON.stringify(jokes));
+  return id;
 }
 
 export function checkSavedJokes(currentJoke) {

@@ -1,15 +1,16 @@
 import { getJoke } from "./getjoke.js";
 import { saveJoke, checkSavedJokes } from "./storing.js";
 import { renderJoke, renderJokes } from "./render.js";
+import { deleteJoke } from "./delete.js";
 
 const addcurrentJoke = document.querySelector(".current-joke__text");
 const newJokeBtn = document.querySelector(".current-joke__new-joke");
 const saveJokeBtn = document.querySelector(".current-joke__save-joke");
-const savedJokes = JSON.parse(localStorage.getItem("jokes"));
-
-let currentJoke = "";
 
 document.addEventListener("DOMContentLoaded", renderJokes());
+
+let currentJoke = "";
+let id = 0;
 
 newJokeBtn.addEventListener("click", async () => {
   currentJoke = await getJoke();
@@ -21,7 +22,9 @@ saveJokeBtn.addEventListener("click", () => {
   if (checkSavedJokes(currentJoke)) {
     alert("Witz ist schon gespeichert.");
   } else {
-    saveJoke(currentJoke);
-    renderJoke(currentJoke);
+    id = saveJoke(currentJoke);
+    renderJoke(currentJoke, id);
   }
 });
+
+window.deleteJoke = deleteJoke;
