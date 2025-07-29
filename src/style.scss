@@ -17,7 +17,7 @@ body {
   flex-direction: column;
   margin: 3rem auto 1rem auto;
 
-  @include up600() {
+  @include tablets-and-up() {
     margin-top: 4rem;
   }
 }
@@ -36,7 +36,7 @@ body {
   background-color: $background-color-lighten;
   padding: 1.5rem;
 
-  @include up600() {
+  @include tablets-and-up() {
     margin: 4rem auto;
     width: 100%;
     box-sizing: border-box;
@@ -58,7 +58,7 @@ body {
     width: 100%;
     justify-content: center;
 
-    @include up600() {
+    @include tablets-and-up() {
       flex-direction: row;
     }
   }
@@ -112,7 +112,7 @@ body {
   margin: 1rem auto;
   color: $text-color;
 
-  @include up600() {
+  @include tablets-and-up() {
     margin-top: 3rem;
   }
   &__title {
@@ -149,7 +149,7 @@ body {
   justify-content: space-between;
   width: 80%;
 
-  @include up600() {
+  @include tablets-and-up() {
     padding: 1.5rem;
   }
 

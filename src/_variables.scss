@@ -3,7 +3,7 @@ $text-color: #fff;
 $background-color: #333;
 $background-color-lighten: #444;
 
-@mixin up600() {
+@mixin tablets-and-up() {
   @media only screen and (min-width: 600px) {
     @content;
   }
